@@ -1,0 +1,520 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA==" crossorigin="anonymous" />
+    <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+	<title></title>
+	<style type="text/css">
+		*{
+			box-sizing: border-box;
+		}
+		html, body{
+			height: 100%;
+		}
+		body{
+			background-color: #fff;
+			padding: 0;
+			margin: 0;
+		}
+		#header{
+			background:#2A1274;
+			width: 100%;
+			height: 60px;
+			position: fixed;
+			z-index: 10;
+		}
+		body{
+			background-image: url(Body_img.jpg);
+			background-size: cover;
+		    background-attachment: fixed;}
+
+		.list{text-align: right;
+			margin: 20px;}
+		.list li{
+			list-style-type: none;
+			display: inline-block;
+			transition: 0.5s all;
+		}
+		.list li:hover{
+			background-color: #f00;
+			border-radius: 2.5px;
+		}
+		.list li a{
+			text-decoration: none;
+			color: #fff;
+			padding: 22px;
+			font-family: verdana;
+		}
+		.sidebarIconToggle
+		{
+			height: 22px;
+		    width: 22px;
+			position: absolute;
+			z-index: 20;
+			top: 22px;
+			left: 15px;
+			cursor: pointer;
+			position: fixed;
+		}
+		.spinner{
+			height: 2.5px;
+			background:#fff;
+			transition: all 0.3s;
+		}
+		.spinner.middle,
+		.spinner.bottom{
+			margin-top: 2.5px;
+		}
+		#openSidebarMenu:checked ~.sidebarIconToggle>.spinner.middle{
+			opacity: 0;
+		}
+		#openSidebarMenu:checked ~.sidebarIconToggle>.spinner.top{
+			transform: rotate(135deg);
+			margin-top:8px;
+		}
+		#openSidebarMenu:checked ~.sidebarIconToggle>.spinner.bottom{
+			transform: rotate(-135deg);
+			margin-top: -8px;
+		}
+		#sidebarMenu{
+			overflow-y: auto;
+			height: 100%;
+			position: fixed;
+			left: 0;
+			top: 0;
+			width: 200px;
+			margin-top: 60px;
+			background:#2e86de;
+			transform: translateX(-200px);
+			transition: transform 250ms ease-in-out;
+		}
+		#openSidebarMenu:checked ~ #sidebarMenu{
+			transform: translateX(0px);			`
+		}
+		.menu{
+			list-style: none;
+			padding: 0;
+			margin: 0;
+		}
+		.menu li{
+			color:#fff;
+			border-bottom: 1px solid rgba(255,255,255,0.10);
+		}
+		.menu li a{
+			color:#fff;
+			display: block;
+			text-decoration: none;
+			text-transform: uppercase;
+			padding:18px;
+		}
+		.heading h2{
+			font-family: verdana;
+			text-align: center!important;
+			color: #F14F91;
+			margin-top: 100px!important;
+		}	
+		.main{
+			background-color: #0009;
+			display:inline-flex;
+			width: 100%;
+			height: 240px;
+			margin-top: 30px;
+			padding: 10px;
+			justify-content:center;
+		}
+		
+		.main1{
+			background-color: #0009;
+			display:inline-flex;
+			width: 100%;
+			height: 240px;
+			margin-top: 50px;
+			padding: 10px;
+			justify-content:center;
+		}
+		.main2{
+			background-color: #0009;
+			display:inline-flex;
+			width: 100%;
+			height: 240px;
+			margin-top: 50px;
+			padding: 10px;
+			justify-content:center;
+		}
+		.main3{
+			background-color: #0009;
+			display:inline-flex;
+			width: 100%;
+			height: 240px;
+			margin-top: 50px;
+			padding: 10px;
+			justify-content:center;
+		}
+		
+		.main img{width: 220px;
+			height: 220px;
+			background: hsla(120,50%,60%,0.9);
+			margin-right: 15px;
+			margin-left: 15px;
+			transition: 0.5s}
+		.main img:hover{transform: scale(1.06);
+			border: 2px solid white;}	
+		.main1 img{width: 220px;
+			height: 220px;
+			background: hsla(120,50%,60%,0.9);
+			margin-right: 15px;
+			margin-left: 15px;
+			transition: 0.5s}
+		.main1 img:hover{transform: scale(1.06);
+			border: 2px solid white;}
+		.main2 img{width: 220px;
+			height: 220px;
+			background: hsla(120,50%,60%,0.9);
+			margin-right: 15px;
+			margin-left: 15px;
+			transition: 0.5s}
+		.main2 img:hover{transform: scale(1.06);
+			border: 2px solid white;}
+		.main3 img{width: 220px;
+			height: 220px;
+			background: hsla(120,50%,60%,0.9);
+			margin-right: 15px;
+			margin-left: 15px;
+			transition: 0.5s}
+		.main3 img:hover{transform: scale(1.06);
+			border: 2px solid white;}
+
+			.contactus{
+			width: 100%;
+			height: 100vh;
+			padding: 80px 0;
+			position: relative;
+		}
+
+			.contactus:before{
+			content: "";
+			position: absolute;
+			top: 0;
+			left: 0;
+			bottom: 0;
+			right: 0;
+			background: linear-gradient(#16c9f6 80%, #fff 0);
+			z-index: -1;
+		}
+		.hidechekbox{	display: none;}
+		.row a img{
+			border-radius: 10px;
+		}
+		.extra-imgdiv
+		{
+			padding: 50px!important;
+			border:1px solid rgba(0,0,0,0.2);
+			box-shadow: 0 5px 10px 0(0,0,0,0.3)
+		}
+	</style>
+</head>
+<body class=" align-item-center display-flex justify-content-center">
+	<div id="header">
+		<ul class="list ">
+			<li><a href="homepage.html"><i class="fa fa-arrow-left" aria-hidden="true"></i></a></li>
+			<li><a href="signuppage.html" target="_blank">Register</a></li>
+			<li><a href="loginpage.html" target="-_blank">Login</a></li>
+			<li><a href="#contactid">Contactus</a></li>
+			<li><a href="#footerid">Aboutus</a></li>
+		</ul>
+	</div>
+	<input type="checkbox" id="openSidebarMenu" class="hidechekbox" />
+	<label for="openSidebarMenu" class="sidebarIconToggle">
+		<div class="spinner top"></div>
+		<div class="spinner middle"></div>
+		<div class="spinner bottom"></div>
+	</label>
+	<div id="sidebarMenu">
+		<ul class="menu">
+			<li><a href="https://en.wikipedia.org/wiki/Taj_Mahal">Taj Mahal</a></li>
+			<li><a href="https://en.wikipedia.org/wiki/Amer_Fort ">Amber Palace</a></li>
+            <li><a href="https://en.wikipedia.org/wiki/Hawa_Mahal">Hawa Mahal</a></li>
+            <li><a href="https://en.wikipedia.org/wiki/Red_Fort">Red Fort</a></li>
+            <li><a href="https://www.ranthamborenationalpark.com/">Ranthambore National Park</a></li>
+			<li><a href="https://en.wikipedia.org/wiki/Agra_Fort">Agra Fort</a></li>
+            <li><a href="https://en.wikipedia.org/wiki/City_Palace,_Jaipur">City Palace, Jaipur</a></li>
+            <li><a href="https://en.wikipedia.org/wiki/Qutub_Minar">Qutub Minar</a></li>
+            <li><a href="https://en.wikipedia.org/wiki/Humayun’s_Tomb">Humayun’s Tomb</a></li>
+			<li><a href="https://en.wikipedia.org/wiki/Jantar_Mantar_Jaipur">Jantar Mantar - Jaipur</a></li>
+            <li><a href="https://en.wikipedia.org/wiki/City_Palace">City Palace</a></li>
+            <li><a href="https://en.wikipedia.org/wiki/Jim_Corbett_National_Park">Jim Corbett National Park</a></li>
+            <li><a href="https://en.wikipedia.org/wiki/India_Gate">India Gate</a></li>
+            <li><a href="https://en.wikipedia.org/wiki/ehrangarh_Fort_and_Museum">Mehrangarh Fort and Museum</a></li>
+            <li><a href="https://en.wikipedia.org/wiki/Gateway_Of_India_Mumbai">Gateway Of India Mumbai</a></li>
+            <li><a href="https://en.wikipedia.org/wiki/Sajjangarh_Monsoon_Palace">Sajjangarh Monsoon Palace</a></li>
+            <li><a href="https://en.wikipedia.org/wiki/Konark_Sun_Temple">Konark Sun Temple</a></li>
+            <li><a href="https://en.wikipedia.org/wiki/Tiger_Hill_Darjeeling">Tiger Hill, Darjeeling</a></li>
+            <li><a href="https://en.wikipedia.org/wiki/Spiti_Valley">Spiti Valley</a></li>
+            <li><a href="https://en.wikipedia.org/wiki/Shore_Temple">Shore Temple</a></li>
+            <li><a href="https://en.wikipedia.org/wiki/Chhatrapati_Shivaji_Maharaj_Terminus">Chhatrapati Shivaji Maharaj Terminus</a></li>
+            <li><a href="https://en.wikipedia.org/wiki/Golconda_Fort">Golconda Fort</a></li>
+            <li><a href="https://en.wikipedia.org/wiki/Sree_Virupaksha_Temple_Hampi">Sree Virupaksha Temple, Hampi</a></li>
+            <li><a href="https://en.wikipedia.org/wiki/Marina_Beach">Marina Beach</a></li>
+            <li><a href="https://en.wikipedia.org/wiki/Dudhsagar_Falls">Dudhsagar Falls</a></li>
+		</ul>
+	</div>
+	<label class="heading col-lg-8 col-md-8 col-10 offset-lg-2 offset-md-2 offset-1"><h2>HERE ARE SOME TOURISM PLACE</h2></label>
+	<section class="header-imgdiv">
+	<div class="container">
+		<div class="row">
+			<div class="extra-imgdiv col-lg-3 col-md-3 col-12">
+				<a href="#"><i class="fa-2x fa fa-camera-retro" aria-hidden="true"></i></a>
+				<h2>MARINA BEACH</h2>
+				<a href="marina-beach.jpg"><img src=".\images\marina-beach.jpg" title="Marina-Beach"></a>
+				<a class="ticketBuy" href="#">BUY</a>
+			</div>
+
+			<div class="extra-imgdiv col-lg-3 col-md-3 col-12">
+				<a href="#"><i class=" fa-2x fa fa-camera-retro" aria-hidden="true"></i></a>
+				<h2>QUTUB MINAR</h2>
+				<a href="qutub-minar.jpg"><img src=".\images\qutub-minar.jpg" title="Qutub-Minar"></a>
+				<a class="ticketBuy" href="#">BUY</a>
+			</div>
+
+			<div class="extra-imgdiv col-lg-3 col-md-3 col-12">
+				<a href="#"><i class="fa-2x fa fa-camera-retro" aria-hidden="true"></i></a>
+				<h2>RANTHAMBORE NATIONAL PARK</h2>
+				<a href="Ranthambore-National-Park-safari.jpg"><img src=".\images\Ranthambore-National-Park-safari.jpg"title="Ranthambore-National-Park"></a>
+				<a class="ticketBuy" href="#">BUY</a>
+			</div>
+
+			<div class="extra-imgdiv col-lg-3 col-md-3 col-12">
+				<a href="#"><i class="fa-2x fa fa-camera-retro" aria-hidden="true"></i></a>
+				<h2>JIM KORBETT PARK</h2>
+				<a href="Jim_Korbett.jpg"><img src=".\images\Jim_Korbett.jpg" title="Jim-Korbett-Park"></a>
+				<a class="ticketBuy" href="#">BUY</a>
+			</div>			
+		</div>
+	</div>
+</section>
+
+	<section class="header-imgdiv">
+		<div class="container">
+			<div class="row">
+				<div class="extra-imgdiv col-lg-3 col-md-3 col-12">
+				<a href="#"><i class="fa-2x fa fa-camera-retro" aria-hidden="true"></i></a>
+				<h2>RED FORT</h2>
+				<a href="Jim_Korbett.jpg"><img src=".\images\Red-fort.jpg" title="Red-fort"></a>				
+				<a class="ticketBuy" href="#">BUY</a>
+			</div>
+
+			<div class="extra-imgdiv col-lg-3 col-md-3 col-12">
+				<a href="#"><i class="fa-2x fa fa-camera-retro" aria-hidden="true"></i></a>
+				<h2>SHATTARPTI SIVAJI TAMPLE</h2>
+				<a href="Shattarapati_Sivaji.jpeg"><img src=".\images\Shattarapati_Sivaji.jpeg" title="Shattarapati-Sivaji"></a>
+				<a class="ticketBuy" href="#">BUY</a>
+			</div>
+
+			<div class="extra-imgdiv col-lg-3 col-md-3 col-12">
+				<a href="#"><i class="fa-2x fa fa-camera-retro" aria-hidden="true"></i></a>
+				<h2>SPITY VALLY</h2>
+				<a href="Spiti-Vally.jpg"><img src=".\images\Spiti-Vally.jpg"title="Spiti-Vally"></a>
+				<a class="ticketBuy" href="#">BUY</a>
+			</div>
+
+			<div class="extra-imgdiv col-lg-3 col-md-3 col-12">
+				<a href="#"><i class="fa-2x fa fa-camera-retro" aria-hidden="true"></i></a>
+				<h2>SHORE TAMPLE</h2>
+				<a href="Shore_Tample.jpeg"><img src=".\images\Shore_Tample.jpeg"title="Shore-Tample"></a>
+				<a class="ticketBuy" href="#">BUY</a>
+			</div>				
+			</div>
+		</div>
+	</section>
+
+	<section class="header-imgdiv">
+		<div class="container">
+			<div class="row">
+				<div class="extra-imgdiv col-lg-3 col-md-3 col-12">
+				<a href="#"><i class="fa-2x fa fa-camera-retro" aria-hidden="true"></i></a>
+				<h2>TAJ MAHAL</h2>
+				<a href="Taj-Mahal.jpg"><img src=".\images\Taj-Mahal.jpg" title="Taj-Mahal"></a>
+				<a class="ticketBuy" href="#">BUY</a>
+			</div>
+
+			<div class="extra-imgdiv col-lg-3 col-md-3 col-12">
+				<a href="#"><i class="fa-2x fa fa-camera-retro" aria-hidden="true"></i></a>
+				<h2>TIGOR HILL DARGLING</h2>
+				<a href="Tiger-Hill-Dargling.jpg"><img src=".\images\Tiger-Hill-Dargling.jpg"title="Tiger-Hill-Dargling"></a>
+				<a class="ticketBuy" href="#">BUY</a>
+			</div>
+
+			<div class="extra-imgdiv col-lg-3 col-md-3 col-12">
+				<a href="#"><i class="fa-2x fa fa-camera-retro" aria-hidden="true"></i></a>
+				<h2>KONARK SUN TAMPLE</h2>
+				<a href="Konark_Sun_Tample.jpg"><img src=".\images\Konark_Sun_Tample.jpg" title="Konark-Sun-Tample"></a>
+				<a class="ticketBuy" href="#">BUY</a>
+			</div>
+
+			<div class="extra-imgdiv col-lg-3 col-md-3 col-12">
+				<a href="#"><i class="fa-2x fa fa-camera-retro" aria-hidden="true"></i></a>
+				<h2>RED FORT</h2>
+				<a href="jantar-mantar-jaipur.jpg"><img src=".\images\jantar-mantar-jaipur.jpg" title="Jantar-Mantar-Jaipur"></a>
+				<a class="ticketBuy" href="#">BUY</a>
+			</div>				
+			</div>
+		</div>
+	</section>
+
+	<section class="header-imgdiv">
+		<div class="container">
+			<div class="row">
+				<div class="extra-imgdiv col-lg-3 col-md-3 col-12">
+				<a href="#"><i class="fa-2x fa fa-camera-retro" aria-hidden="true"></i></a>
+				<h2>INDIA GATE</h2>
+				<a href="India-Gate.jpg"><img src=".\images\India-Gate.jpg" title="India-Gate"></a>
+				<a class="ticketBuy" href="#">BUY</a>
+			</div>
+
+			<div class="extra-imgdiv col-lg-3 col-md-3 col-12">
+				<a href="#"><i class="fa-2x fa fa-camera-retro" aria-hidden="true"></i></a>
+				<h2>HUMAYUNTOMB</h2>
+				<a href="humayuntomb1.jpg"><img src=".\images\humayuntomb1.jpg" title="Humayuntomb"></a>
+				<a class="ticketBuy" href="#">BUY</a>
+			</div>
+
+			<div class="extra-imgdiv col-lg-3 col-md-3 col-12">
+				<a href="#"><i class="fa-2x fa fa-camera-retro" aria-hidden="true"></i></a>
+				<h2>HAWAMAHL</h2>
+				<a href="hawamahl.jpg"><img src=".\images\hawamahl.jpg" title="Hawamahl"></a>
+				<a class="ticketBuy" href="#">BUY</a>
+			</div>
+
+			<div class="extra-imgdiv col-lg-3 col-md-3 col-12">
+				<a href="#"><i class="fa-2x fa fa-camera-retro" aria-hidden="true"></i></a>
+				<h2>GOLCONDA FORT HYDERABAD</h2>
+				<a href="Golconda-Fort-Hyderabad.jpg"><img src=".\images\Golconda-Fort-Hyderabad.jpg"title="Golconda-Fort-Hyderabad"></a>
+				<a class="ticketBuy" href="#">BUY</a>
+			</div>				
+			</div>
+		</div>
+	</section>
+
+	<section class="header-imgdiv">
+		<div class="container">
+			<div class="row">
+				<div class="extra-imgdiv col-lg-3 col-md-3 col-12">
+				<a href="#"><i class="fa-2x fa fa-camera-retro" aria-hidden="true"></i></a>
+				<h2>GATEWAY OF INDIA</h2>
+				<a href="Gateway_Of_India_Mumbai.jpg"><img src=".\images\Gateway_Of_India_Mumbai.jpg"title="Gateway_Of_India_Mumbai"></a>
+				<a class="ticketBuy" href="#">BUY</a>
+			</div>
+
+			<div class="extra-imgdiv col-lg-3 col-md-3 col-12">
+				<a href="#"><i class="fa-2x fa fa-camera-retro" aria-hidden="true"></i></a>
+				<h2>CITY PLACE JAIPUR</h2>
+				<a href="city-palace-jaipur.jpg"><img src=".\images\city-palace-jaipur.jpg" title="City-Palace-Jaipur"></a>
+				<a class="ticketBuy" href="#">BUY</a>
+			</div>
+
+			<div class="extra-imgdiv col-lg-3 col-md-3 col-12">
+				<a href="#"><i class="fa-2x fa fa-camera-retro" aria-hidden="true"></i></a>
+				<h2>MAHRANGARH FORT</h2>
+				<a href="Mehrangarh_Fort.jpg"><img src=".\images\Mehrangarh_Fort.jpg" title="Mehrangarh-Fort"></a>
+				<a class="ticketBuy" href="#">BUY</a>
+			</div>
+
+			<div class="extra-imgdiv col-lg-3 col-md-3 col-12">
+				<a href="#"><i class="fa-2x fa fa-camera-retro" aria-hidden="true"></i></a>
+				<h2>AGRA FORT</h2>
+				<a href="2AgraFort.jpg" ><img src=".\images\2AgraFort.jpg" title="Agra-Fort"></a>
+				<a class="ticketBuy" href="#">BUY</a>
+			</div>				
+			</div>
+		</div>
+	</section>
+
+	<section class="contactus" id="contactid">
+	<div class="container headings text-center">
+		<h1 class="text-center font-weight-bold">CONTACT_US</h1>
+		<p class="text-capitalize pt-1">We are here to Help and Answer Any Question You Might Have. We look Forward to Hearing From You </p>
+	</div>
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-8 col-md-8 col-10 offset-lg-2 offset-md-2 offset-1">
+				<form action="/action_page.php">
+					<div class="form-group">
+						<input type="text" class="form-control" placeholder="Username" id="name" required autocomplete="off">
+					</div>
+					<div class="form-group">
+						<input type="email" class="form-control" placeholder="Enter email" id="email" required autocomplete="off">
+					</div>
+					<div class="form-group">
+						<input type="number" class="form-control" placeholder="Phone" id="phone" required autocomplete="off">
+					</div>
+					<div class="form-group">
+						<textarea class="form-control" rows="4" id="comment" placeholder="Enter Your Message"></textarea>
+					</div>
+					<div class="d-flex justify-content-center form-button">
+					<button type="submit" class="btn btn-primary ">Submit</button>
+				</div>
+				</form>				
+			</div>			
+		</div>
+	</div>
+</section>
+
+
+<!--*********footer starts*******-->
+<footer class="footersection" id="footerid">
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-4 col-md-6 col-12 footer-div">
+				<div>
+					<h3> ABOUT AMAN TOURISM AGENCY</h3>
+					<p>"TRAVEL HAS HELPED US TO UNDERSTAND THE MEANING OF LIFE AND IT HAS HELPED US BECOME BETTER PEOPLE. EACH TIME WE TRAVEL, WE SEE THE WORLD WITH NEW EYES."</p>
+					<p>"NEVER LET YOUR MEMORIES BE GREATER THAN YOUR DREAM."</p>
+				</div>
+			</div>
+
+			<div class="col-lg-4 col-md-6 col-12 footer-div text-center">
+				<div>
+					<h3>NAVIGATION LINK</h3>
+					<li><a href="#"><i class="fa fa-home" aria-hidden="true"></i></a></li>
+					<li><a href="#">Destination</a></li>
+					<li><a href="#">About</a></li>
+					<li><a href="#">Contact</a></li>					
+				</div>
+			</div>
+
+			<div class="col-lg-4 col-md-12 col-12 footer-div">
+				<div class="">
+					<h3> DETAILS OF AGENCY</h3>
+					<P>amankumargupta8252@gmail.com</P>	
+					<p><i class="fa fa-phone" aria-hidden="true"></i> 9304738197</p>
+					<p><i class="fa fa-phone" aria-hidden="true"></i> 8252199908</p>
+					<p>Support 24/7</p>				
+				</div>
+			</div>
+		</div>
+
+		<div class="container">
+			<div class="row align-item-center display-flex justify-content-center">
+				<div class=" col-lg-4 col-md-8 offset-md-2 imgfooter">
+					<img src=".\images\IMG_3741.jpg">					
+				</div>
+			</div>			
+		</div>
+
+		<div class="mt-5 text-center copyright">Copyright © 2020 All rights reserved | This Template made by Er. Aman kumar </div>
+
+		<div class="scroll float-right">
+			<i class="fa fa-arrow-up" onclick="topFuction()" id="myBtn"></i>			
+		</div>
+	</div>
+</footer>
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>loginpage</title>
+	<style type="text/css">
+		*{box-sizing: border-box;}
+			body{
+				padding: 0;
+				margin: 0;
+				background: rgb(255,110,255);
+				background-size: cover;
+				align-items: center;
+				display: flex;
+				font-family: sans-serif;
+				justify-content: center;
+			}
+			.container{
+				position: relative;
+				height: auto;
+				width: 450px;
+				margin-top: 100px;
+				background-color: #dedede;
+				border-radius:5px;
+			}
+			.label{
+				padding: 20px 130px;
+				font-size: 35px;
+				font-weight: bold;
+				color: #130f40;
+			}
+			.main{
+				margin: 20px 50px;
+			}
+			.main label{
+				display: inline-flex;
+				border:1px solid white;
+				font-size: 18px;
+				box-shadow: 0px 1px 2px;
+				border-radius: 4px;
+				margin-bottom: 2px;
+			}
+			.main input{
+				display: block;
+				box-shadow: 0px 2px 3px; 
+				padding: 5px;
+				width: 350px;				
+			}
+			.main input[type=submit]
+			{
+				margin-top:40PX;
+				margin-bottom: 80PX;
+				box-shadow: 2px 3px 5px #fff;
+				cursor: pointer;
+				outline: none;
+				color: white;
+				font-size: 18PX;
+				font-weight: bold;
+				background: #1A237E;
+				border-radius: 5px;
+			}
+			span{
+				display: block;
+				color: red;
+				background:rgba(255,10,20,0.5);
+				margin-top:4px;
+			}
+	</style>
+</head>
+<body>
+	<div class="container">
+		<h1 class="label">User Login</h1>
+		<form method="post" class="main" onsubmit="return func();">
+			<label>Phone & Email</label>
+			</br>
+			<input type="text" id="username" placeholder=" Enter Username"/>
+			<span id="pass-err1" style=""></span></br>
+			<label>Password</label></br>
+			<input type="password" id="Password" placeholder="Enter Password"/>
+			<span id="pass-err2" style=""></span>
+			<input type="submit" value="Submit" name=""/>
+		</form>
+	</div>
+	<script type="text/javascript">
+		function func()
+		{
+			var usrnm=document.getElementById('username').value;
+			var a=document.getElementById('Password').value;
+			if (usrnm=="") 
+			{
+				document.getElementById('pass-err1').innerHTML="*Please fill the Username.";
+				return false;
+			}
+			else if (usrnm.length<=9) {
+				document.getElementById('pass-err1').innerHTML="*Please fill Correct Username.";
+				return false;
+			}
+			else if(a=="")
+			{
+				document.getElementById('pass-err2').innerHTML="*please fill the password.";
+				return false;
+			}
+			else if(a.length<=5)
+			{
+				document.getElementById("pass-err2").innerHTML="*Password must be grater than 5 char.";
+				return false;
+			}
+			else if(a.length>20)
+			{
+				document.getElementById("pass-err2").innerHTML="*Password must be smaller than 20 char.";
+				return false;
+			}
+			else if(a.search(/[a-z]/)==-1)
+			{
+				document.getElementById("pass-err2").innerHTML="*Password must be atleast 1 lower case char.";
+		        return false;
+		    }
+		    else if(a.search(/[A-Z]/)==-1)
+		    {
+		    	document.getElementById("pass-err2").innerHTML="*Password must be atleast 1 upper case char.";
+		    	return false;
+			}
+			else if(a.search(/[0-9]/)==-1)
+			{
+				document.getElementById("pass-err2").innerHTML="*Password must be atleast 1 digits.";
+				return false;
+			}
+			else if(a.search(/[!\@\#\$\%\^\&\*\<\>\,\?\;]/)==-1)
+			{
+				document.getElementById("pass-err2").innerHTML="*Password must be atleast 1 special char.";
+				return false;
+			}
+			else
+			{
+			alert("login successful");
+			}
+		}
+	</script>
+</body>
+</html>

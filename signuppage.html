@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title> Signupform</title>
+	<style type="text/css">
+		body{
+			padding:0;
+			margin:0;
+			background: rgba(150,150,150,0.6);
+		}
+		#divee{background: rgba(150,150,150,0.9);
+			width:450px;
+		 height: 500px;
+		 margin:auto;
+		 align-items: center;
+		}
+		#frm{background-color: hsla(240, 60%,60%,0.8);
+			padding: 20px;}
+		#tab{color: #fff;
+			padding: 20px;
+			height: 410px;}
+		input{
+			width: 100%;
+		}
+		input[type=submit]{background: #742e08;
+			font-family: verdana;
+			font-size: 18px;}
+	</style>
+</head>
+<body>
+	<div id="divee">
+	<FIELDSET bgcolor="grey">
+	<LEGEND>Signup Form</LEGEND>
+<form id="frm" method="post" action="" onsubmit="return myFunction();" >
+	<table id="tab">
+		<tr>
+			<td>
+	Name:</td>
+	<td> <input type="text" id="name" placeholder="Enter your name"/>
+		<span id="mess" style="color: red;">  </span>
+
+</td>
+</tr>
+<tr>
+	<td>
+	DOB:</td>
+	<td> <input type="date" id="dob" placeholder="Enter your date of birth"/>
+		<span id="messa" style="color: red;">  </span>
+</td>
+</tr>
+<tr>
+	<td>
+	Phone:</td>
+	<td> <input type="Phone" id="Num" placeholder="Enter your phn number"/>
+		<span id="messag" style="color: red;">  </span>
+
+</td>
+</tr>
+<tr>
+	<td>
+	Email:</td>
+	<td> <input type="mail" id="email" placeholder="abcde112@gmail.com">
+		<span id="message" style="color: red;"></span>
+</td>
+</tr>
+<tr>
+	<td>
+	Password:</td> 
+	<td><input type="password" id="password1" placeholder="Enter password">
+		<span id="messages" style="color: red;">  </span>
+</td>
+</tr>
+<tr>
+	<td>
+	Confirm Password:
+</td>
+	 <td><input type="password" id="password2" placeholder="Reenter password">
+	 	<span id="messagess" style="color: red;">  </span>
+	</td>
+</tr>
+<tr>
+	<td colspan="2">
+		<input type="submit"  value="Submit" />
+	</td>
+</tr>
+    </table>
+</form>
+</FIELDSET>
+</div>
+<script type="text/javascript">
+	function myFunction()
+	{
+		var emailId=document.getElementById('email').value;
+		atpos = emailId.indexOf("@");
+		dotpos = emailId.lastIndexOf(".");
+		var Name=document.getElementById('name').value;
+		var DOB=document.getElementById('dob').value;
+		var phn=document.getElementById('Num').value;
+		var a=document.getElementById('password1').value;
+		var b=document.getElementById('password2').value;
+		if(Name=="")
+		{
+			document.getElementById('mess').innerHTML="*please fill Name";
+			return false;
+		}
+		else if(DOB=="")
+		{
+			document.getElementById('messa').innerHTML="*please fill date of birth";
+			return false;
+		}
+		else if(phn=="")
+		{
+			document.getElementById('messag').innerHTML="*please fill phone number";
+			return false;
+		}
+		else if(atpos<1||(dotpos-atpos<2))
+		{
+			document.getElementById('message').innerHTML="*please fill valid emailId.";
+			return false;
+		}
+		else if(a=="")
+		{
+			document.getElementById('messages').innerHTML="*please fill password.";
+			return false;
+		}
+		else if(a.length<=5)
+		{
+			document.getElementById("messages").innerHTML="*Password must be grater than 5 char.";
+			return false;
+		}
+		else if(a.length>20)
+		{
+			document.getElementById("messages").innerHTML="*Password must be smaller than 20 char.";
+			return false;
+		}
+		else if(a.search(/[a-z]/)==-1)
+		{
+		document.getElementById("messages").innerHTML="*Password must be atleast 1 lower case char.";
+		return false;
+		}
+		else if(a.search(/[A-Z]/)==-1)
+		{
+		document.getElementById("messages").innerHTML="*Password must be atleast 1 upper case char.";
+		return false;
+		}
+		else if(a.search(/[0-9]/)==-1)
+		{
+		document.getElementById("messages").innerHTML="*Password must be atleast 1 digits.";
+		return false;
+		}
+		else if(a.search(/[!\@\#\$\%\^\&\*\<\>\,\?\;]/)==-1)
+		{
+		document.getElementById("messages").innerHTML="*Password must be atleast 1 special char.";
+		return false;
+		}
+		else if(b=="")
+		{
+		document.getElementById("messagess").innerHTML="*please fill password again";
+		return false;
+		}
+		else if(a!=b)
+		{
+			document.getElementById("messagess").innerHTML="*password must be same";
+			return false;
+		}
+		else
+		{
+			window.alert("successful!")
+		}
+	}
+</script>
+</body>
+</html>
